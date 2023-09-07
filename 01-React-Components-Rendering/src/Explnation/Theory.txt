@@ -1,3 +1,6 @@
+****React component and props concept***
+****Execution of react application***
+
 What is Component?
 	Reuseable building block which can consist of HTML, CSS and JavaScript.
 	Separation of concerm         
@@ -57,4 +60,7 @@ How className work in Custom Component?
 	const classes = 'card ' + props.className;
 	<div className={classes}>{props.children}</div>
 
+React component evaluation:
+	First It will go till the end of the component where none of the component is getting called.
+	From there it will start evaluating.
 
