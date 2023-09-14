@@ -1,0 +1,107 @@
+********Use of state hooks and communication of data bw components both way******
+
+with the help of useState , we can handle event i.e mouse click etc
+
+why we give variable name in place of handler eg onClick={clickHandler}
+    the reason we give variable is because we we don't want to evaluate the function
+    when JXS code is getting executed.
+                                      So if we give something like below 
+    onClick={clickHandler()}, it will be evalutaed when JXS code executes.
+    So by giving onClick={clickHandler} means we are passing pointer of function.
+
+Reason to use State?
+    function ExpenseItem(props) {
+    let title = props.title;
+    const clickHandler = () =>{
+        title="updated"
+        console.log("clicked)
+    }
+    return (
+        <Card className="expense-item">
+        <ExpenseDate date={props.date}/>
+        <div className="expense-item__description">
+            <h2>{props.title}</h2>
+        </div>
+        <div className="expense-item__price">${props.price}</div>
+        <button onClick={clickHandler}>changes title</button>
+        </Card>
+    );
+    }
+
+    in the above code, title won't be updated as when we are clicking on change title button basically we are calling 
+    clickHandler method and the method getting executed(can be confirmed by console.log()).
+
+    Even after function is getting exceuted, It won't upadte the title as IT WON'T RE-EXECUTE JXS CODE I.E IT WON't
+    RE-EXECUTE COMPONENT FUNCTION..
+    TODO THIS, WE NEED TO USE USESTATE() HOOKS CONCEPT. So useStae is used to run re-run the component 
+    function again.
+
+Use of State:
+    If we have data and if the data needs to be changes and each changed value needs to display in user interface, then
+    we need state to do this.
+
+
+Execution of useSTate:
+    const [title, setTitle] = useState(props.title);
+    const clickHandler = () => {
+        setTitle("Updated");
+    };
+    <h2>{title}>/h2>
+    So here, by default title has value which is passed in props.title.
+    the value of title or component function will be re-evaluated only when setTitle() is called.
+
+    IMPORTANT-NOTE:
+        setTitle("Updated"); means it has been schedule to upadte the title, but it doen't gurentee that the title will 
+        be updated when  we are calling setTitle("Updated"). It might take some time to get update.
+
+StateCreation:
+    We are calling ExpenseItem 4 times from App.js and hence 4 separated state will get created in ExpenseItem.js 
+    file and because of this when we click on upadte of any particular row, only that row will be updated as 
+    corresponding states get upadted.
+
+Two way data binding process:
+    one input has two binding. So intial we write input box as empty and then we assign it with dynamic 
+    value of state variable, It will help us to clear data at the end in the input box.
+    Example:
+        <input type="text" value={changeTitle} onChange={titleChangeHandler} />
+
+        value={changeTitle} is responsible for two way binding .
+
+        const formsubmitHandler = (event) => {
+        // by default form onsubmit has behaviour to load the page once onsubmit executed.
+        event.preventDefault()
+        console.log(newExpense)
+        setChangeTitle('')
+        setChangeAmount('')
+        setChangeDate('')
+        };    
+
+Child to Parent data communication?
+    transfer data to parent node from child node.
+    TODO this, we will pass function as an argument in props. refer to below Example
+
+    const NewExpense = () => {
+    const newExpenseDataHandler = (enteredExpenseData) => {
+        const newExpenseData = {
+        ...enteredExpenseData,
+        id: Math.random().toString(),
+        };
+        console.log(newExpenseData)
+    };
+    and we are passing whole function as props argument to ExpenseForm component.
+    <ExpenseForm onSaveExpenseData={newExpenseDataHandler} />
+
+    On the other hand i.e in ExpenseForm.js Once we have data we just have to execute function which is passed as 
+    an argument.
+    props.onSaveExpenseData(newExpense)
+    NOTE: we need to give () as we are executing/calling the function which is passed as an argument.
+
+
+
+
+
+
+
+
+
+    

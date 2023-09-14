@@ -1,0 +1,102 @@
+*****Passing list bw Component and based on some condition*****
+        NewExpense, ExpenseForm, App.js file
+
+        {expenses.map((expense) => (
+        <ExpenseItem
+          key = {expense.id}
+          date={expense.date}
+          title={expense.title}
+          price={expense.price}
+        />
+    In the above example, we are rendering list with Component.
+    Make sure after => you use() not {}
+
+    NOTE: It is important to provide key as It will tell react order sequence of list.
+
+
+***********Conditional Content*******
+  Rendering different output under different condition
+  i.e based on some condition, we will call the component
+
+  Method - 1:
+      {filteredExpenses.length === 0 ? (
+        <p>The List is empty</p>
+      ) : (
+        filteredExpenses.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            date={expense.date}
+            title={expense.title}
+            price={expense.amount}
+          />
+        ))
+      )}
+  Method - 2: Here , If the condition is true then after && will execute
+       {filteredExpenses.length === 0 && <p>The List is empty</p>}
+       {filteredExpenses.length > 0 &&
+        filteredExpenses.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            date={expense.date}
+            title={expense.title}
+            price={expense.amount}
+          />
+        ))}
+  Method - 3:
+      let expenseContent = <p>The List is empty</p>;
+      if (filteredExpenses.length > 0) {
+        expenseContent =
+          filteredExpenses.length > 0 &&
+          filteredExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              date={expense.date}
+              title={expense.title}
+              price={expense.amount}
+            />
+          ));
+      }
+
+      then pass as 
+      return (
+        <div>
+          {expenseContent}
+        </div>
+      );
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+****React component and props concept***
+****Execution of react application***
+
+What is Component?
+	Reuseable building block which can consist of HTML, CSS and JavaScript.
+	Separation of concerm         
+	A component in react is just java script function, A special kind of function which return JSX code.                                                                                                                                                                                                                                                                                                                                                                                  - It also split Big chunk of code into  multiple smaller functions
+	
+React Execution :
+	When we run the react application, first index.js will execute. 
+	
+const root = ReactDOM.createRoot(document.getElementById('root'));  
+	This is nothing but it is calling HTML element which has id as root. Once It call, It will print HTML element.
+	as it is rendering app.js, so HTML element with id as root will get replaced by App.js
+
+Below are the two React library which we will use to create React project.	
+	"react": "^18.0.0",
+	"react-dom": "^18.0.0"
+
+index.html :
+	This is the only HTML file which is used by React ( because of this , we call react as Single Page application )
+	and It is present in PUBLIC folder.
+	It will get loaded while executing ReactDOM.createRoot(document.getElementById('root')); 
+JXS : 
+	In React we write code in JXS format wwhich is developer friendly but this JXS is not supported by 
+	any browser and because of this only when we see the source code, It completely differnet then the 
+	actual code code
+
+Calling Component :
+	1) <ExpenseItem></ExpenseItem>
+	2) <ExpenseItem/>
+	Above , both are correct If we have to send any data as argument then we can use 1st approach and if we just
+	have to call any component then we can go with 2nd approach.
+About Index.js:
+	We genrally call only root element from this file which is app.js to make App as Root component
+
+Adding Styling ( CSS ) file:
+	import './ExpenseItem.css';
+	Note : In order to call a class in css file, we have to use className instead of class we do in HTML.
+
+Adding Dynamic Data in JSX:
+	const expenseTitle = "Car Insurance";
+	<h2>{expenseTitle}</h2>
+
+Foramt in VSStudio:
+	shift+alt+f
+
+Children props:
+	eg Card.js component
+	When we have to design generic kind of template which can be used across the Components,
+	we can create Children props.
+
+Difference between <Card> xyz </Card> and <h2> xyz </h2>.
+	<h2> xyz </h2> : If we use content between HTML tags, It will work but when we use content between Custom component
+	eg. <Card> xyz </Card>, then we have use use concept of children props in order to work.
+	for example :
+		<div className='card'>{props.children}</div>
+
+How className work in Custom Component?
+	const classes = 'card ' + props.className;
+	<div className={classes}>{props.children}</div>
+
+React component evaluation:
+	First It will go till the end of the component where none of the component is getting called.
+	From there it will start evaluating.
+
