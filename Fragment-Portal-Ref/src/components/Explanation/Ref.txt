@@ -1,0 +1,29 @@
+----Use Of ref---------
+     1) It’s like a secret pocket of your component that React doesn’t track.
+     2) Doesn’t trigger re-render when you change it which means even if the current value gets updated, It
+        won't execute the whole component again.
+
+--->
+If you tried to implement this with a ref, React would never re-render the component, so you’d never see 
+the count change! See how clicking this button does not update its text:
+
+import { useRef } from 'react';
+export default function Counter() {
+  let countRef = useRef(0);
+
+  function handleClick() {
+    // This doesn't re-render the component!
+    countRef.current = countRef.current + 1;
+  }
+
+  return (
+    <button onClick={handleClick}>
+      You clicked {countRef.current} times
+    </button>
+  );
+}
+
+--> <input id="username" type="text" ref={userNameRef} />
+--> <input id="age" type="number" ref={userAgeRef} />
+
+

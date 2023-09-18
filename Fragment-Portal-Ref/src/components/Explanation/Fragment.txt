@@ -1,0 +1,45 @@
+-----Use Of FRAGMENT-----------
+If we have JXS return statement like below
+    return (
+        <h2>Hero</h2>
+        <b>Hero</b>
+    )
+    It will throw error as It can have only one return TAG, so we have to surround with <div>
+    The problem with <div> tag is some time we will end with a lots of nexted <div> tag.
+    This will make slow execution of code as well.
+
+    So with the help of <ReactFragment> JXS code </ReactFragment> , we can fix the above problem.
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
