@@ -1,0 +1,66 @@
+Styling Component dynamically so that other component won't be affected
+
+Reason :
+    We have created CourseGoalItem.css file and we are importing this css file to CourseGoalitem.js file.
+    The problem here is the CSS will be affecting all the tag which is using classsName as goal-item  will
+    be affected.!!!
+
+Here based on some condition we are styling: (CourseInput.js)
+    <form onSubmit={formSubmitHandler}>
+        <div className="form-control">
+            <label style={{color: isValid ? 'red' : 'green'}}>Course Goal</label>
+            <input style={{
+            borderColor : isValid ? 'green' : 'red',
+            background : isValid ? 'green' : 'red'
+            }} type="text" onChange={goalInputChangeHandler} />
+        </div>
+        <Button type="submit">Add Goal</Button>
+    </form>
+The above  one is inline styling
+----------------Adding className dynamically---------------------------------------------
+we can do the above same thing by making class name as dynamically  
+    div className={`form-control ${!isValid ? 'invalid' : ''}`}>
+
+    so if Is valid is false then className form-control.invalid will be executed
+    else only form-control will gets executed.
+we did created css class for invalid as well:
+    
+        .form-control.invalid input {
+        border-color: red;
+        background: green;
+        }
+
+        .form-control.invalid label {
+        color: red
+        }
+
+
+----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
