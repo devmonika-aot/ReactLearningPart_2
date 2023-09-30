@@ -1,0 +1,36 @@
+-----------Redux-Toolkit-----------
+To resolve the redux issue stated in Theory2.txt, we came across Slice.
+
+Ideally we should have only one reducer component.
+We create slice of global state, global state is nothing state for component.
+lets say we may have auth a global state for Authentication componnet here we have counter state for Counter component
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

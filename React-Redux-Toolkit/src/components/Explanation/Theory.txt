@@ -1,0 +1,59 @@
+-------------REDUX-----------------
+Types of state:
+    LocalState : State that belong to single Component. ( useState/useReducer can be used)
+    Cross-Component State : State that affect multiple Component. (props chain)
+    app-wide: state that affects the entire app.( this can be done using props chain as well)
+     
+So, to handle Cross-Componnet and app wide state, we can use either (React Context/Redux).
+
+Why Redux?
+State transfer between components is pretty messy in React since it is hard to keep track of which component the 
+data is coming from. It becomes really complicated if users are working with a large number of states within an
+application.
+            Redux solves the state transfer problem by storing all of the states in a single place called a store.
+Every component in the application can then directly access the required state from that store
+
+---------------------------Working Principle Of Redux---------------
+
+Centrail Data Store : This is the place where shared data between Componnets.
+
+1) All the components which uses shared data i.e store data, they subscribe to shared STORE.
+2) When there will be any change in the data, the corresponding component which is subscribe to the data will be informed.
+3) To update data, Components doesn't update STORE directly, It uses Reducer function to updated data.
+4) Component dispatch request to reducer by passing action, action is nothing but the task which need to perform 
+   inside reducer.
+5) Once reducer update data in store, it informs the subscibe component.
+
+------------------------------------------
+Since Redux is java script library and there is no realtionship between react and reduxSo,
+we have to install third party library
+npm install redux react-redux
+------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

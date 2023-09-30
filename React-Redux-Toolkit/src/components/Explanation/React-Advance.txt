@@ -1,0 +1,73 @@
+---use of useEffect--
+As we know reducer method should be pure method, which means It should not contain any SIDE-EFFECT and also
+shouldn't have any async method.
+
+So if we have to execute any http call or async call inside recuder method, inorder to do that 
+we can use use effect in the component which is dependent upon reducer mthod i.e wherever we are using useSelector()
+
+and useEffect can be dependent upon value return vy useSelector()
+-----------eg below----------
+
+
+import { Fragment } from "react";
+import Counter from "./components/Counter";
+import Auth from "./components/Auth";
+import Header from "./components/Header.js";
+import { useDispatch, useSelector } from "react-redux";
+import UserProfile from "./components/UserProfile.js";
+function App() {
+ const loginFlag = useSelector((state) => state.auth.isAuthenticated);
+    useEffect({
+        -----------logic-----
+
+    },[loginFlag]);
+ 
+  const dispatch = useDispatch();
+  return (
+    <Fragment>
+      <Header />
+      {!loginFlag && <Auth />}
+      {loginFlag && <UserProfile />}
+      <Counter />
+    </Fragment>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

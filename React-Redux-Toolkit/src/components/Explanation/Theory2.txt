@@ -1,0 +1,41 @@
+We have added Provider component in index.js file i.e parent node to make store is available for app.js 
+and child component of app.js
+
+--------execution process---------
+When we are clicking on increment/decrement button, It is executing dispatch method which is calling reducer method
+Once the value inside store changes, It executes Counter component as useSelector subscribe it automatically.
+-----------------------------------
+Problem with redux:
+    If we have more complex data or number of values inside store is huge then since we have to override previous
+    state with all the data, it will be very complex and same peice of data we may have to write a lot of time.
+    eg:
+        return { 
+            counter: state.counter - 1 ,
+             showCounter : state.showCounter,
+             abc,
+             xyz
+             pqr 
+             etc
+             };
+-----------------------------------
+SO we have redux-toolkit third party library we can use to solve the above problem, It 
+also makes redux easy and simple.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
