@@ -1,0 +1,73 @@
+what is basic React?
+    main job: render UI and react to user Input
+    in details, evaluate & Render JXS , Render UI , Manage State & props, React to (User) events & input,
+    Re-evalutae component & props upon state changes.
+
+    The above are basic of react.
+
+SIDE EFFECT:
+    anything else apart from above known as SIDE EFFECT.
+    e.g : calling https, storing data in browser , amange timers EFFECT
+    So the above task must executed outside of the normal component execution
+
+Therefore we have introduce useEffect to handle sideEffect in React.
+we have 
+    useEffect(()=>{},[dependencies]), Here function will get executed while executing component 
+    only if specified dependencies will be changed.
+
+    If if the page is reload, useEffect will kept the store data.
+
+Real Life scenarios:
+    user shouldn't logged out after refreshing the page, TODO this we will use browser memory to store falg value.
+    and flag value will get changed only after certain condition not by eevery execution of components.
+
+We might be ending with creating infinite loop while using useEffect.
+
+
+localStorage is global variable which can be use to set the value at browser storage.
+[]-> this condition inside useEffect() means , the method will be executed after each loading.
+        So even we refresh the page, It will execute.
+
+
+----Debouncing------------
+
+This is a techneque by which we can stop the execution of method inside useEffect().
+    we can stop by mentioning time (if user stop typing for 500ms) /no of character(after 20 char, It wil 
+    execute the method).
+    We can use setTimeout() for this.
+
+----------------
+  // useEffect(() => {
+  //   const identifier = setTimeout(() => {
+  //     console.log('Checking form validity!');
+  //     setFormIsValid(
+  //       enteredEmail.includes('@') && enteredPassword.trim().length > 6
+  //     );
+  //   }, 500);
+
+  //   return () => {
+  //     console.log('CLEANUP');
+  //     clearTimeout(identifier);
+  //   };
+  // }, [enteredEmail, enteredPassword]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+---useReducer Hooks-----------
+useReducer : 
+    useReducer is same like useState hooks but it is more advance compare to useState.
+    we use useReducer only when :
+        If we have more complex State management for eg If it got multiple state and
+        those states are dependent on eachother.
+
+const[state,dispatchFn] = useReducer(reducerFn,initialState,initialFn)
+    state: similar to useState i.e state snapshot used in component to render/re-evaluation
+    dispatchFn: function to update the state( same  as use State)
+
+    reducerFn : A function that trigger automatically once an action is dispatch using dispatchFn.
+    It receives latest state snapshot and retun the new, updated state snapshot.
+    (prevState, action) => newState
+
+    initialState: the insital value of the state
+    
+    IntialFn : A function to set intial state programitacally.
+example:
+-----------------------------------------------------
+        const emailReducer = (prevState, action) => {
+        if (action.type === "USER_INPUT") {
+            return { value: action.val, isValid: action.val.includes("@") };
+        }
+        if (action.type === "INPUT_BLUR") {
+            return { val: prevState.value, isValid: prevState.isValid };
+            //Once we loose focus, we are also executing validate email, so this will check previous state value
+        }
+        return { value: "", isValid: false };
+        };
+-----------------------------------------------------
+        initailly we are setting value of input bix is '' and isValid is false
+        const [emailState, emailStateDispatch] = useReducer(emailReducer, {
+        value: "",
+        isValid: false,
+         });
+-----------------------------------------------------
+ emailStateDispatch({ type: "USER_INPUT", val: event.target.value });
+ // here reducer function is getting called and the action argumnet will contain the above object
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
