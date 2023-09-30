@@ -1,0 +1,51 @@
+there are tow war of getting data from http call
+    1) Fetch
+    2) Axios -0> It will generate status code whenever It encounter any error
+---Using Fetch---
+This is Async call, so when we use .then() , It will only execute once async all is completed.
+
+The get call can be modified like this as well. we can remove then and can add aysn & await call.
+Ultimatley both approach are using async call no difference apart from syntax.
+
+
+async function fetchMoviesHandler() {
+    const response = await fetch("https://swapi.dev/api/films");
+    const data = await response.json();
+    const moviesObject = data.results.map((moviedata) => {
+          console.log(moviedata)
+          // taking only results key data from josn file
+          return {
+            // extracing only episode_id,title, release_date and opening_crawl from results key value
+            id: moviedata.episode_id,
+            title: moviedata.title,
+            releaseDate: moviedata.release_date,
+            openingText: moviedata.opening_crawl,
+          };
+        });
+        setMovies(moviesObject);
+      });
+  };
+
+
+
+------------------------
+handle Is loading concept
+----------
+handle error response as well.
+----------POST Call---------
+const response = await fetch("https://swapi.dev/api/fils",{
+        method: 'POST',
+        body: JSON.stringify(movie),
+        headers:{
+          'Content-Type':'application/json'
+        } 
+
+      });
+
+
+
+
+
+
+
+
